@@ -296,6 +296,7 @@ def base_minimize(func, dimensions, base_estimator,
     # Optimize
     for n in range(n_calls):
         next_x = optimizer.ask()
+        print(next_x)
         next_y = func(next_x)
         result = optimizer.tell(next_x, next_y)
         result.specs = specs
