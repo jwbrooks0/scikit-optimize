@@ -297,10 +297,12 @@ def base_minimize(func, dimensions, base_estimator,
     for n in range(n_calls):
         next_x = optimizer.ask()
         print(next_x)
+        if eval_callbacks(callbacks, result):
+            break
         next_y = func(next_x)
         result = optimizer.tell(next_x, next_y)
         result.specs = specs
-        if eval_callbacks(callbacks, result):
-            break
+        #if eval_callbacks(callbacks, result):
+            #break
 
     return result
